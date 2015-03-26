@@ -14,4 +14,4 @@ JAVA_OPTS="-Xms256m -Xmx256m -Xmn128m"
 
 echo $CLASSPATH
 
-java $JAVA_OPTS -DlogFilePath=${SITE} -classpath $CLASSPATH net.trustie.extractor.CnblogsQ_Comment_Extractor >>log/${SITE}.log 2>&1 &
+java $JAVA_OPTS -DlogFilePath=${SITE} -classpath $CLASSPATH net.trustie.comment.extractor.CnblogsQ_Comment_Extractor >>log/${SITE}.log 2>&1 &
