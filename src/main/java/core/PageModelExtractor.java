@@ -31,7 +31,6 @@ public class PageModelExtractor {
 		PageModelExtractor pageModelExtractor = new PageModelExtractor();
 		pageModelExtractor.init(clazz);
 		return pageModelExtractor;
-
 	}
 
 	private void init(Class<?> clazz) {
@@ -40,6 +39,7 @@ public class PageModelExtractor {
 		fieldExtractors = new ArrayList<FieldExtractor>();
 		for (Field field : ClassUtils.getFieldsIncludeSuperClass(clazz)) {
 			field.setAccessible(true);
+			//System.out.println(field.getName()+field.toString());
 			FieldExtractor fieldExtractor = getAnnotationExtractBy(clazz, field);
 			if (fieldExtractor != null) {
 				checkFormat(field, fieldExtractor);
@@ -193,7 +193,7 @@ public class PageModelExtractor {
 		// TODO Auto-generated method stub
 		Object o = null;
 		try {
-			o = clazz.newInstance();			
+			o = clazz.newInstance();//将所写的model实例化
 			for (FieldExtractor fieldExtractor : fieldExtractors) {
 				if (fieldExtractor.isMulti()) {
 					List<String> value;

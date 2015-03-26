@@ -7,7 +7,7 @@ import extension.RawPage;
 
 public interface PageDao {
 
-	@Select("select id,url,html,crawledTime from ${table} where id>= ${begin_id} and id< ${end_id}")
+	@Select("select id,url,html from ${table} where id>= ${begin_id} and id< ${end_id}")
 	public List<RawPage> selectScourcePage(@Param("table") String table_name,
 			@Param("begin_id") int begin_id, @Param("end_id") int end_id);
 

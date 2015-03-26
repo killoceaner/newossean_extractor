@@ -1,10 +1,10 @@
-package net.trustie.extractor;
+package net.trustie.comment.extracter;
 
 import java.sql.SQLException;
 
+import net.trustie.comment.model.CnblogsQ_Comment_Model;
 import net.trustie.downloader.DataBasePageErrorOutPut;
 import net.trustie.downloader.GenerateRawPage;
-import net.trustie.model.CNblogsNews_Model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,15 +12,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
-import us.codecraft.webmagic.selector.Html;
 import core.PageModelPipeline;
 import core.Site;
 import extension.OsseanExtractor;
 
 @Component
-public class CNblogNews_Extractor {
+public class CnblogsQ_Comment_Extractor {
 	@SuppressWarnings("rawtypes")
-	@Qualifier("cnBlogNewsPipeline")
+	@Qualifier("cnblogsQCommentPipeline")
 	@Autowired
 	private PageModelPipeline modelPipeline;
 
@@ -31,27 +30,25 @@ public class CNblogNews_Extractor {
 	@Qualifier("errorPageToDB")
 	@Autowired
 	private DataBasePageErrorOutPut dbPageErrorOutPut;
-
+	
 	public void begin() {
-		generateRawPage.setTable("cnblogs_news_html_detail");
-		dbPageErrorOutPut.setTableName("cnblogs_news_error_page");
-		
+		generateRawPage.setTable("cnblogs_q_solved_html_detail");
+		dbPageErrorOutPut.setTableName("cnblogs_q_solved_error_page");
+
 		OsseanExtractor
 				.create(Site.me().setResultNum(100), modelPipeline,
-						CNblogsNews_Model.class).setUUID("cnblog_news")
+						CnblogsQ_Comment_Model.class).setUUID("cnblog_q_solve_comment")
 				.setDownloader(generateRawPage)
 				.setPageErrorOutPut(dbPageErrorOutPut).start();
-	
 	}
-
+	
 	public static void main(String[] args) throws SQLException {
 		ApplicationContext aContext = new ClassPathXmlApplicationContext(
 				"classpath:/spring/applicationContext*.xml");
 
-		final CNblogNews_Extractor extractor = aContext
-				.getBean(CNblogNews_Extractor.class);
+		final CnblogsQ_Comment_Extractor extractor = aContext
+				.getBean(CnblogsQ_Comment_Extractor.class);
 
 		extractor.begin();
 	}
-
 }

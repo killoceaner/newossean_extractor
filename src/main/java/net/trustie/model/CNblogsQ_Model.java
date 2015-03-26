@@ -63,6 +63,7 @@ public class CNblogsQ_Model implements AfterExtractor, ValidateExtractor {
 	private String questionType;
 
 	public void afterProcess(Page page) {
+		System.out.println("********************************************");
 		// 处理帖子的标签
 		tag = StringHandler.combineTags(this.tags);
 

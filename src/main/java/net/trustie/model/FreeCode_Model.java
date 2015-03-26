@@ -28,7 +28,7 @@ public class FreeCode_Model implements AfterExtractor, ValidateExtractor {
 
 	private int history = 0;
 
-	private String crawlerTime = null;
+	//private String crawlerTime = null;
 	
 	
 
@@ -67,7 +67,7 @@ public class FreeCode_Model implements AfterExtractor, ValidateExtractor {
 	
 	@Override
 	public void afterProcess(Page page) {
-
+		System.out.println("***************************************************");
 		// 处理帖子的tags licenses operateSystems implementations
 		tag = StringHandler.combineTags(this.tags);
 		license = StringHandler.combineTags(this.licenses);
@@ -98,7 +98,7 @@ public class FreeCode_Model implements AfterExtractor, ValidateExtractor {
 		
 		//处理爬虫时间
 		SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		this.crawlerTime = s.format(page.getTime());
+	//	this.crawlerTime = s.format(page.getTime());
 		
 	}
 
@@ -173,14 +173,14 @@ public class FreeCode_Model implements AfterExtractor, ValidateExtractor {
 		this.projectTitle = projectTitle;
 	}
 	
-	public String getCrawlerTime() {
-		return crawlerTime;
-	}
-
-	public void setCrawlerTime(String crawlerTime) {
-		this.crawlerTime = crawlerTime;
-	}
-	
+//	public String getCrawlerTime() {
+//		return crawlerTime;
+//	}
+//
+//	public void setCrawlerTime(String crawlerTime) {
+//		this.crawlerTime = crawlerTime;
+//	}
+//	
 	public String getProjectDesc() {
 		return projectDesc;
 	}
