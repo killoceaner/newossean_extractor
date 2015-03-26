@@ -1,0 +1,6 @@
+net\trustie\core\GeneratePage.class
+net\trustie\core\JsoupTest.class
+net\trustie\core\GetPage.class
+net\trustie\core\ExtractorTask.class
+net\trustie\core\OsseanExtractorTest.class
+net\trustie\core\DateTest.class
